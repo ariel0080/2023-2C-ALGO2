@@ -17,16 +17,8 @@ int main() {
 	std::cout << j.tesoro << std::endl;
 	std::cout << cuentaTesoros(jugador1) << std::endl;
 	dibujarTablero();
-	//Registro r = getRegistro(tableroJugador1,20,20);
-	//setTesoro(getRegistro(tableroJugador1,0,0));
 
-	//dibujarTablero();
 
-	/*pruebas para registro
-	Registro *r = new Registro;
-	std::cout << "Registro sin inicializar: " << r->turnosInactivos << std::endl;
-	inicializarRegistro(r);
-	std::cout << "Registro inicializado: " << r->turnosInactivos << std::endl;*/
 
 	return 0;
 }

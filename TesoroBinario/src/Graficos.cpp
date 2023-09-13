@@ -38,7 +38,7 @@ void dibujarTablero() {
 
 
 	dibujarMargenSuperior();
-	dibujarCuerpoCelda();
+	dibujarCelda();
 	dibujarMargenInferior();
 }
 
