@@ -41,12 +41,12 @@
 const static std::string M11 = "╔═════";
 const static std::string M12 = "╦═════";
 const static std::string M13 = "╦═════╗";
-const static std::string M21 = "║ TES ";
-const static std::string M22 = "║ ESP ";
+const static std::string M21 = "║ \x1B[38;2;17;245;120mTES \x1b[0m";
+const static std::string M22 = "║ \x1b[33mESP \x1b[0m";
 const static std::string M23 = "║     ";
 const static std::string M24 = "║     ║";
-const static std::string M25 = "║ TES ║";
-const static std::string M26 = "║ ESP ║";
+const static std::string M25 = "║ \x1B[38;2;17;245;120mTES \x1b[0m║";
+const static std::string M26 = "║ \x1b[33mESP \x1b[0m║";
 const static std::string M31 = "╠═════";
 const static std::string M32 = "╬═════";
 const static std::string M33 = "╬═════╣";
@@ -72,9 +72,9 @@ void dibujarMargenInferior();
 /*
  * Dibuja Tablero de juego
  */
-void dibujarTablero();//Tablero *tablero);
+void dibujarTablero(Tablero * tablero);//Tablero *tablero);
 
-void dibujarCelda();
+void dibujarCelda(Tablero * tablero);
 
 
 #endif /* SRC_GRAFICOS_H_ */

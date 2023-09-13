@@ -27,7 +27,7 @@ Registro getRegistro(Tablero *tablero, int fila, int columna) {
 	return tablero->matriz[fila][columna];
 }
 
-int cuentaTesoros(Tablero * tablero){
+int cuentaTesoros(Tablero * tablero) {
 	int cantidadTesoros = 0;
 	for(int i = 0;i < tablero->alto;i++){
 		for(int j = 0;j < tablero->ancho;j++){
