@@ -3,6 +3,7 @@
 #include "Usuario.h"
 #include "Graficos.h"
 #include "Tablero.h"
+#include "Imprimir.h"
 
 void presentacion() {
 	std::cout << s1 << std::endl << s2 << std::endl << s1 << std::endl
@@ -124,7 +125,6 @@ void moverTesoro(Tablero *propio, Tablero *ajeno) {
 			coordenadas = solicitarPosicion(0, 'T');
 			fil = coordenadas[0];
 			col = coordenadas[1];
-			std::cout << fil << "-----" << col << std::endl; ////////sdsdsdsdddddddddddddddddddddddddddddddddddddddddddddddddd
 			reg = getRegistro(propio, fil, col);
 		}
 
@@ -135,7 +135,6 @@ void moverTesoro(Tablero *propio, Tablero *ajeno) {
 		coordenadas = solicitarPosicion(0, 'T');
 		fil = coordenadas[0];
 		col = coordenadas[1];
-		std::cout << fil << "-----" << col << std::endl; ////////sdsdsdsdddddddddddddddddddddddddddddddddddddddddddddddddd
 		Registro reg2 = getRegistro(propio, fil, col);
 
 		while (isBlock(reg2)) {
@@ -153,8 +152,7 @@ void moverTesoro(Tablero *propio, Tablero *ajeno) {
 		Registro regAjeno = getRegistro(ajeno, fil,
 				col);
 		if (regAjeno.tesoro) {
-			std::cout << std::endl << "ATENCION! TESORO ADVERSARIO EN FILA "
-					<< fil << " COLUMNA " << col
+			std::cout << std::endl << "ATENCION! TESORO ADVERSARIO EN ESTA POSICION - MANDA UN ESPIA EN EL PROXIMO TURNO"
 					<< std::endl;
 		}
 		if (regAjeno.espia) {
@@ -168,3 +166,45 @@ void moverTesoro(Tablero *propio, Tablero *ajeno) {
 	}
 }
 
+void cargaInicialJugador(Tablero * jugador, std::string nombreArchivoInicial){
+
+	setTesorosJugador(jugador);
+	dibujarTablero(jugador);
+	imprimirTablero(jugador,nombreArchivoInicial);
+}
+
+void Juego(Tablero * jugador1, Tablero * jugador2){
+	bool seguir = true;
+		int turno = 1;
+		while (seguir) {
+			separador("TURNO JUGADOR 1");
+			setEspiaJugador(jugador1, jugador2);
+			moverTesoro(jugador1, jugador2);
+			std::cin.get();
+			dibujarTablero(jugador1);
+			turno++;
+			imprimirTablero(jugador1,to_string(turno, "Jugador-1-Turno-"));
+			decrementaTurnos(jugador1,jugador2);
+
+			if (cuentaTesoros(jugador2) == 0) {
+				seguir = false;
+				separador("EL JUGADOR 1 HA GANADO LA PARTIDA!!! FELICITACIONES");
+			} else {
+				std::cin.get();
+				separador("TURNO JUGADOR 2");
+				std::cin.get();
+				setEspiaJugador(jugador2, jugador1);
+				moverTesoro(jugador2, jugador1);
+				std::cin.get();
+				dibujarTablero(jugador2);
+				turno++;
+				imprimirTablero(jugador2,to_string(turno, "Jugador-2-Turno"));
+				decrementaTurnos(jugador2,jugador1);
+
+				if (cuentaTesoros(jugador1) == 0) {
+					seguir = false;
+					separador("EL JUGADOR 2 HA GANADO LA PARTIDA!!! FELICITACIONES");
+				}
+			}
+		}
+}

@@ -33,5 +33,13 @@ void setEspiaJugador(Tablero * tablero1, Tablero * tablero2);
  * Mueve tesoro dentro del tablero
  */
 void moverTesoro(Tablero * tablero1, Tablero * tablero2);
+/*
+ * Seteo inicial de tesoros y tablero para el jugador
+ */
+void cargaInicialJugador(Tablero * jugador, std::string nombreArchivoInicial);
+/*
+ * Desarrollo del juego Tesoro Binario
+ */
+void Juego(Tablero * jugador1, Tablero * jugador2);
 
 #endif /* SRC_USUARIO_H_ */

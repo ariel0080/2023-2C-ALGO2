@@ -99,7 +99,7 @@ void imprimirTablero(Tablero *tablero, std::string nombreArch ) {
 
 	std::ofstream archivo;
 
-	archivo.open(nombreArch.c_str(),std::fstream::app);
+	archivo.open(nombreArch.c_str(),std::fstream::out);
 
 	imprimirMargenSuperior(archivo);
 	imprimirCelda(tablero,archivo);
