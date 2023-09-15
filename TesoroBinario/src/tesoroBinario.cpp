@@ -15,10 +15,10 @@ int main() {
 	Tablero *jugador2 = inicializarTablero(20, 20);
 
 	separador("TIEMPO PARA QUE JUGADOR 1 ESCONDA LOS TESOROS");
-	cargaInicialJugador(jugador1,"Jugador-1-Turno-0");
+	cargaInicialJugador(jugador1,"Jugador-1-Turno-0.txt");
 	std::cin.get();
 	separador("TIEMPO PARA QUE JUGADOR 2 ESCONDA LOS TESOROS");
-	cargaInicialJugador(jugador2, "Jugador-2-Turno-0");
+	cargaInicialJugador(jugador2, "Jugador-2-Turno-0.txt");
 
 	Juego(jugador1,jugador2);
 	borrarTablero(jugador1);
