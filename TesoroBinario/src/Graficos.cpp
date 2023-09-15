@@ -68,7 +68,7 @@ void dibujarCelda(Tablero *tablero) {
 	}
 
 	for (int i = 0; i < tablero->ancho - 1; i++) { // FILAS
-		if (getRegistro(tablero, tablero->ancho -1, tablero->alto-1).tesoro){
+		if (getRegistro(tablero, i, tablero->alto-1).tesoro){
 			std::cout << M21;
 		}
 		else{
@@ -83,7 +83,7 @@ void dibujarCelda(Tablero *tablero) {
 
 
 	for (int i = 0; i < tablero->ancho - 1; i++) { //FILAS
-		if (getRegistro(tablero, tablero->ancho -1, tablero->alto-1).espia){
+		if (getRegistro(tablero, i, tablero->alto-1).espia){
 			std::cout << M22;
 		}
 		else{
@@ -98,24 +98,5 @@ void dibujarCelda(Tablero *tablero) {
 	}
 
 }
-/* metodos a borrar
- void dibujarCuerpoCelda() {
- for (int i = 0; i < 19; i++) {
- std::cout << M23;
- }
- std::cout << M24 << std::endl;
 
- for (int i = 0; i < 19; i++) {
- std::cout << M23;
- }
- std::cout << M24 << std::endl;
- }
-
- void dibujarBordeInferior() {
- std::cout << M31;
- for (int i = 1; i < 19; i++) {
- std::cout << M32;
- }
- std::cout << M33 << std::endl;
- }*/
 

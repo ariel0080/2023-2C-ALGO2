@@ -5,6 +5,7 @@
 typedef struct {
 	bool tesoro;
 	bool espia;
+	bool bloqueada;
 	short int turnosInactivos;
 }Registro;
 
@@ -25,18 +26,25 @@ void setEspia(Registro &registro);
  */
 void borrarEspia(Registro &registro);
 /*
- * Decrementa turno una vez que el espia encuentra el tesoro, devolviendo true
- * si pudo, y false si el turno ya esta en cero
- */
-bool decrementarTurno(Registro &registro);
-/*
  * Hace un delete del registro
  */
-void borrarRegistro(Registro registro);
+void borrarRegistro(Registro * registro);
 /*
  * Inicializa el registro con valores estandard
  */
 Registro * inicializarRegistro();
 
+/*
+ * Verifica Bloqueo de Celda
+ */
+bool isBlock(Registro &registro);
 
+/*
+ * Bloque celda
+ */
+void block(Registro  &registro);
+/*
+ * Desbloquea celda
+ */
+void unBlock(Registro  &registro);
 #endif /* SRC_REGISTRO_H_ */

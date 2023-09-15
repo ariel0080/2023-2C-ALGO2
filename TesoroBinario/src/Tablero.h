@@ -23,9 +23,13 @@ void borrarTablero(Tablero *tablero);
 /*
  * Obtiene el registro de un tablero para una coordenada dada
  */
-Registro getRegistro(Tablero * tablero, int ancho, int largo);
+Registro  getRegistro(Tablero * tablero, int ancho, int largo);
 /*
  * Cuenta la cantidad de tesoros que hay en el tablero
  */
 int cuentaTesoros(Tablero * tablero);
+/*
+ * Recorre tablero y decrementa turno de celdas bloqueadas
+ */
+void decrementaTurnos(Tablero * tablero);
 #endif /* SRC_TABLERO_H_ */
