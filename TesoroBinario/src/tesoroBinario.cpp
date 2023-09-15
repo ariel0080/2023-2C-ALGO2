@@ -4,6 +4,8 @@
 #include "Graficos.h"
 #include "Registro.h"
 #include "Usuario.h"
+#include "Imprimir.h"
+#include <sstream>
 
 int main() {
 
@@ -33,12 +35,14 @@ int main() {
 
 	/// JUEGO
 	bool seguir = true;
+	int turno = 1;
 	while (seguir) {
 		separador("TURNO JUGADOR 1");
 		setEspiaJugador(jugador1, jugador2);
 		moverTesoro(jugador1, jugador2);
 		std::cin.get();
 		dibujarTablero(jugador1);
+		imprimirTablero(jugador1,to_string(turno, "Jugador-1-Turno-"));
 		decrementaTurnos(jugador1,jugador2);
 
 		if (cuentaTesoros(jugador2) == 0) {
@@ -52,7 +56,8 @@ int main() {
 			moverTesoro(jugador2, jugador1);
 			std::cin.get();
 			dibujarTablero(jugador2);
-			decrementaTurnos(jugador1,jugador2);
+			imprimirTablero(jugador2,to_string(turno, "Jugador-2-Turno"));
+			decrementaTurnos(jugador2,jugador1);
 
 			if (cuentaTesoros(jugador1) == 0) {
 				seguir = false;

@@ -33,4 +33,5 @@ void setEspiaJugador(Tablero * tablero1, Tablero * tablero2);
  * Mueve tesoro dentro del tablero
  */
 void moverTesoro(Tablero * tablero1, Tablero * tablero2);
+
 #endif /* SRC_USUARIO_H_ */

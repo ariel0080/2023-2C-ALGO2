@@ -46,13 +46,15 @@ void decrementaTurnos(Tablero * propio, Tablero *ajeno) {
 			if(propio->matriz[i][j].bloqueada && propio->matriz[i][j].turnosInactivos > 0){
 				propio->matriz[i][j].turnosInactivos--;
 				ajeno->matriz[i][j].turnosInactivos--;
-				//std::cout << "turnos: " << propio->matriz[i][j].turnosInactivos << std::endl;////borrraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaS
 			}
 			if(propio->matriz[i][j].bloqueada && propio->matriz[i][j].turnosInactivos == 0){
-				borrarTesoro(propio->matriz[i][j]);
-				borrarTesoro(ajeno->matriz[i][j]);
-				borrarEspia(propio->matriz[i][j]);
-				borrarEspia(ajeno->matriz[i][j]);
+				if(propio->matriz[i][j].espia){
+					borrarTesoro(ajeno->matriz[i][j]);
+				}
+				if(ajeno->matriz[i][j].espia){
+					borrarTesoro(propio->matriz[i][j]);
+				}
+
 				unBlock(propio->matriz[i][j]);
 				unBlock(ajeno->matriz[i][j]);
 			}

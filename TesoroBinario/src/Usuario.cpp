@@ -87,7 +87,6 @@ void setEspiaJugador(Tablero *propio, Tablero *ajeno) {
 					<< "HAS CAPTURADO UN TESORO CONTRARIO! - CASILLA BLOQUEADA POR 5 TURNOS"
 					<< std::endl;
 		}
-		std::cout << "Seteo espia " << std::endl; ///////VER DE BORRRAR-------------------------------------->
 	}
 
 	if (reg2->tesoro && !reg2->bloqueada) {
@@ -98,12 +97,17 @@ void setEspiaJugador(Tablero *propio, Tablero *ajeno) {
 
 void moverTesoro(Tablero *propio, Tablero *ajeno) {
 	char respuesta;
+	int fil, col = 0;
 	std::cout << std::endl << "Desea mover un tesoro (s/n)?: ";
 	std::cin >> respuesta;
 	if (respuesta == 's' || respuesta == 'S') {
 		std::cout << std::endl << "POSICION ACTUAL " << std::endl;
+
 		int *coordenadas = solicitarPosicion(0, 'T');
-		Registro reg = getRegistro(propio, coordenadas[0], coordenadas[1]);
+		fil = coordenadas[0];
+		col = coordenadas[1];
+
+		Registro reg = getRegistro(propio, fil, col);
 
 		while (isBlock(reg) || reg.tesoro == false) {
 			if (isBlock(reg)) {
@@ -111,40 +115,56 @@ void moverTesoro(Tablero *propio, Tablero *ajeno) {
 						<< reg.turnosInactivos << " turnos" << std::endl;
 			}
 
-			if(reg.tesoro == false){
-				std::cout << std::endl << "NO HAY UN TESORO PROPIO EN ESA POSICION" << std::endl;
+			if (reg.tesoro == false) {
+				std::cout << std::endl
+						<< "NO HAY UN TESORO PROPIO EN ESA POSICION"
+						<< std::endl;
 			}
 
 			coordenadas = solicitarPosicion(0, 'T');
-			reg = getRegistro(propio, coordenadas[0], coordenadas[1]);
+			fil = coordenadas[0];
+			col = coordenadas[1];
+			std::cout << fil << "-----" << col << std::endl; ////////sdsdsdsdddddddddddddddddddddddddddddddddddddddddddddddddd
+			reg = getRegistro(propio, fil, col);
 		}
 
-		borrarTesoro(propio->matriz[coordenadas[0]][coordenadas[1]]);
+		borrarTesoro(propio->matriz[fil][col]);
 
 		std::cout << std::endl << "NUEVA POSICION " << std::endl;
-		int *coordenadas2 = solicitarPosicion(0, 'T');
-		Registro reg2 = getRegistro(propio, coordenadas2[0], coordenadas2[1]);
+
+		coordenadas = solicitarPosicion(0, 'T');
+		fil = coordenadas[0];
+		col = coordenadas[1];
+		std::cout << fil << "-----" << col << std::endl; ////////sdsdsdsdddddddddddddddddddddddddddddddddddddddddddddddddd
+		Registro reg2 = getRegistro(propio, fil, col);
 
 		while (isBlock(reg2)) {
 			std::cout << std::endl << "Casilla bloqueada por "
 					<< reg2.turnosInactivos << " turnos" << std::endl;
 
 			coordenadas = solicitarPosicion(0, 'T');
-			reg2 = getRegistro(propio, coordenadas[0], coordenadas[1]);
+			fil = coordenadas[0];
+			col = coordenadas[1];
+
+			reg2 = getRegistro(propio, fil, col);
 		}
-		setTesoro(propio->matriz[coordenadas[0]][coordenadas[1]]);
-		Registro regAjeno = getRegistro(ajeno, coordenadas[0], coordenadas[1]);
+
+		setTesoro(propio->matriz[fil][col]);
+		Registro regAjeno = getRegistro(ajeno, fil,
+				col);
 		if (regAjeno.tesoro) {
 			std::cout << std::endl << "ATENCION! TESORO ADVERSARIO EN FILA "
-					<< coordenadas[0] + 1 << " COLUMNA " << coordenadas[1] + 1
+					<< fil << " COLUMNA " << col
 					<< std::endl;
 		}
 		if (regAjeno.espia) {
 			std::cout << std::endl
 					<< "ATENCION! UN ESPIA ADVERSARIO HA CAPTURADO TU TESORO "
 					<< std::endl;
-			block(propio->matriz[coordenadas[0]][coordenadas[1]]);
-			block(ajeno->matriz[coordenadas[0]][coordenadas[1]]);
+			block(propio->matriz[fil][col]);
+
+			block(ajeno->matriz[fil][col]);
 		}
 	}
 }
+
