@@ -1,7 +1,9 @@
 
 #ifndef SRC_REGISTRO_H_
 #define SRC_REGISTRO_H_
-
+/*
+ * Estructura registro -> contiene todos los datos necesarios para una celda del trablero
+ */
 typedef struct {
 	bool tesoro;
 	bool espia;

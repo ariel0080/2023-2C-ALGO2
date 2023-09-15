@@ -1,16 +1,15 @@
-
-
 #ifndef SRC_GRAFICOS_H_
 #define SRC_GRAFICOS_H_
 
-//===Color font code===/
-#define GREEN   "\x1b[32m"
-#define LGREEN  "\x1B[38;2;17;245;120m"
-#define RESET   "\x1b[0m"
-
-
 #include <string>
 #include "Tablero.h"
+
+//===Color font code===/
+const static std::string GREEN = "\x1b[32m";
+const static std::string LGREEN = "\x1B[38;2;17;245;120m";
+const static std::string RESET = "\x1b[0m";
+
+
 
 //Constantes para dibujo del tablero
 
@@ -48,12 +47,11 @@ void dibujarMargenInferior();
 /*
  * Dibuja Tablero de juego
  */
-void dibujarTablero(Tablero * tablero);
+void dibujarTablero(Tablero *tablero);
 
 /*
  * Dibuja el cuerpo de la celda, mostrando espias y tesoros de corresponder
  */
-void dibujarCelda(Tablero * tablero);
-
+void dibujarCelda(Tablero *tablero);
 
 #endif /* SRC_GRAFICOS_H_ */
