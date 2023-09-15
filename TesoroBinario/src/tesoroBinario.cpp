@@ -39,8 +39,8 @@ int main() {
 		moverTesoro(jugador1, jugador2);
 		std::cin.get();
 		dibujarTablero(jugador1);
-		decrementaTurnos(jugador1);
-		decrementaTurnos(jugador2);
+		decrementaTurnos(jugador1,jugador2);
+
 		if (cuentaTesoros(jugador2) == 0) {
 			seguir = false;
 			separador("EL JUGADOR 1 HA GANADO LA PARTIDA!!! FELICITACIONES");
@@ -52,8 +52,8 @@ int main() {
 			moverTesoro(jugador2, jugador1);
 			std::cin.get();
 			dibujarTablero(jugador2);
-			decrementaTurnos(jugador1);
-			decrementaTurnos(jugador2);
+			decrementaTurnos(jugador1,jugador2);
+
 			if (cuentaTesoros(jugador1) == 0) {
 				seguir = false;
 				separador("EL JUGADOR 2 HA GANADO LA PARTIDA!!! FELICITACIONES");

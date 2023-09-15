@@ -31,5 +31,5 @@ int cuentaTesoros(Tablero * tablero);
 /*
  * Recorre tablero y decrementa turno de celdas bloqueadas
  */
-void decrementaTurnos(Tablero * tablero);
+void decrementaTurnos(Tablero * propio, Tablero *ajeno);
 #endif /* SRC_TABLERO_H_ */
